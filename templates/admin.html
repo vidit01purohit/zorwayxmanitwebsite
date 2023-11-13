@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MANIT-Admin</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <div>
+    <h1 class="text-center">Welcome to Admin Panel</h1>
+    </div>
+    <h2><b>Add-Student</b></h2>
+    <div>
+        <form action="/admin" method="POST">
+            <div class="col mb-3">
+                <div  class="row mb-3" >Name: <input type="text" name="sname"></div>
+                <div  class="row mb-3">Email: <input type="email" name="email"></div>
+            </div>
+            <div class="col mb-3">
+                <div  class="row mb-3">Password: <input type="password" name="password"></div>
+                <div  class="row mb-3">Scholar no. : <input type="text" name="sscholarno"></div>
+            </div>
+            <div class="col mb-3">
+                <div  class="row mb-3">Stream: <input type="text" name="sstream"></div>
+                <div  class="row mb-3">Branch: <input type="text" name="sbranch"></div>
+            </div>
+            <div class="col mb-3">
+                <div  class="row mb-3">Current semester: <input type="number" name="scurrsemester"></div>
+                <div  class="row mb-3">Date of Birth(dd-mm-yyyy): <input type="text" name="sdob"></div>
+            </div>
+            <div  class="button"><input type="submit"></div>
+        </form>
+    </div>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+  <hr>
+  <div>
+      <div>
+        <h3>Student Details</h3>
+      </div>
+      <table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Current Sem</th>
+            <th scope="col">Stream</th>
+            <th scope="col">Branch</th>
+            <th scope="col">D.O.B</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in student_details: %}
+        <tr>
+        <td>{{student["name"]}}</td>
+        <td>{{student["email"]}}</td>
+        <td>{{student["current_sem"]}}</td>
+        <td>{{student["stream"]}}</td>
+        <td>{{student["branch"]}}</td>
+        <td>{{student["dob"]}}</td>
+        <td>
+            <a href="{{url_for('update', scholar_no=student['scholar_no'])}}" class="btn btn-warning btn-sm" data-toggle="modal">Edit</a>
+            <a href="{{url_for('delete', scholar_no=student['scholar_no'])}}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete</a>
+            <a href="{{url_for('update', scholar_no=student['scholar_no'])}}" class="btn btn-warning btn-sm" data-toggle="modal">Attendance</a>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+  </div>
+  </body>
+</html>
+

@@ -1,0 +1,6 @@
+key.json
+configu.py
+venv/
+__pycache__
+.idea
+*.log

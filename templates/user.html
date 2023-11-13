@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MANIT-User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+  <div>USER PANEL</div>
+  <div>
+      <ol>
+          <li>
+              <ul>
+                  <li>Name: {{student["name"]}}</li>
+                  <li>Email: {{student["email"]}}</li>
+                  <li>Semester: {{student["current_sem"]}}</li>
+                  <li>Branch: {{student["branch"]}}</li>
+                  <li>Stream: {{student["stream"]}}</li>
+                  <li>Scholar_no: {{student["scholar_no"]}}</li>
+                  <li>Date of Birth: {{student["dob"]}}</li>
+              </ul>
+            </li>
+        </ol>
+  </div>
+  <div>
+      <h2>Time table for {{student["current_sem"]}} {{student["branch"]}} </h2>
+      <div>
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                    <th scope="col">DAY</th>
+                    <th scope="col"> 10:00 - 11:00 a.m </th>
+                    <th scope="col"> 11:00 - 12:00 p.m </th>
+                    <th scope="col"> 12:00 - 1:00  p.m </th>
+                    <th scope="col"> 01:00 - 02:00 p.m </th>
+                    <th scope="col"> 02:00 - 03:00 p.m </th>
+                    <th scope="col"> 03:00 - 04:00 p.m </th>
+                </tr>
+                </thead>
+              <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>{{timetable["Monday"]["10:00 - 11:00 a.m"]}}</td>
+                    <td>{{timetable["Monday"]["11:00 - 12:00 p.m"]}}</td>
+                    <td>{{timetable["Monday"]["12:00 - 1:00 p.m"]}}</td>
+                    <td>{{timetable["Monday"]["1:00 - 2:00 p.m"]}}</td>
+                    <td>{{timetable["Monday"]["2:00 - 3:00 p.m"]}}</td>
+                    <td>{{timetable["Monday"]["3:00 - 4:00 p.m"]}}</td>
+                </tr>
+               <tr>
+                    <td>Tuesday</td>
+                    <td>{{timetable["Tuesday"]["10:00 - 11:00 a.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["11:00 - 12:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["12:00 - 1:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["1:00 - 2:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["2:00 - 3:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["3:00 - 4:00 p.m"]}}</td>
+                </tr>
+               <tr>
+                    <td>Wednesday</td>
+                    <td>{{timetable["Tuesday"]["10:00 - 11:00 a.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["11:00 - 12:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["12:00 - 1:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["1:00 - 2:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["2:00 - 3:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["3:00 - 4:00 p.m"]}}</td>
+                </tr>
+               <tr>
+                    <td>Thursday</td>
+                    <td>{{timetable["Tuesday"]["10:00 - 11:00 a.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["11:00 - 12:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["12:00 - 1:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["1:00 - 2:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["2:00 - 3:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["3:00 - 4:00 p.m"]}}</td>
+                </tr>
+               <tr>
+                    <td>Friday</td>
+                    <td>{{timetable["Tuesday"]["10:00 - 11:00 a.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["11:00 - 12:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["12:00 - 1:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["1:00 - 2:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["2:00 - 3:00 p.m"]}}</td>
+                    <td>{{timetable["Tuesday"]["3:00 - 4:00 p.m"]}}</td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <div>
+      <h2>ATTENDANCE</h2>
+      <table class="table table-hover">
+          <thead>
+           <tr>
+                {% for key in attendance.keys():%}
+                <th scope="col">{{key.upper()}}</th>
+                {%endfor%}
+           </tr>
+          </thead>
+          <tbody>
+          <tr>
+                {%for key,value in attendance.items():%}
+                <td>{{"{:.0f}".format((value/total_classes[key])*100)}} %</td>
+                {%endfor%}
+          </tr>
+          </tbody>
+      </table>
+  </div>
+  <div><button><a href="/logout">logout</a></button></div>
+</body>
+</html>

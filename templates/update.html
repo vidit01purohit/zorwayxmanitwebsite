@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update-User-Details</title>
+</head>
+<body>
+     <div class="modal-body">
+         <form action="{{ url_for('update', scholar_no=student['scholar_no'])}}" method="POST">
+             <div class="form-group">
+                 <label>Current Semester</label>
+                 <input type="text" name="scurrsemester" class="form-control"  placeholder="{{student['current_sem']}}">
+             </div>
+             <button type="submit" class="btn btn-success mb-2">Update</button>
+         </form>
+     </div>
+</body>
+</html>
